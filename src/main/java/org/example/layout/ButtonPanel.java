@@ -54,8 +54,10 @@ public class ButtonPanel {
             public void actionPerformed(ActionEvent e) {
                 newButton.setEnabled(false);
                 addButton.setEnabled(true);
+                updateButton.setEnabled(false);
                 deleteButton.setEnabled(false);
-                clearButton.setEnabled(false);
+                clearButton.setEnabled(true);
+                formPanel.setIdTextFieldStatus(false);
             }
         });
 
@@ -76,7 +78,7 @@ public class ButtonPanel {
                 formPanel.getContactNoTextField().getText(),
                 formPanel.getQualificationComboBox().getSelectedItem().toString(),
                 formPanel.getChooser().getDate(),
-                formPanel.getAdressTextArea().getText(),
+                formPanel.getAddressTextArea().getText(),
                 formPanel.getImagePathTextField().getText());
 
                 employeeDao.add(employee);
@@ -104,7 +106,7 @@ public class ButtonPanel {
                         formPanel.getContactNoTextField().getText(),
                         formPanel.getQualificationComboBox().getSelectedItem().toString(),
                         formPanel.getChooser().getDate(),
-                        formPanel.getAdressTextArea().getText(),
+                        formPanel.getAddressTextArea().getText(),
                         formPanel.getImagePathTextField().getText());
 
                 employeeDao.update(employee);
@@ -163,7 +165,8 @@ public class ButtonPanel {
         formPanel.getContactNoTextField().setText("");
         formPanel.getImagePathTextField().setText("");
         formPanel.getChooser().setDate(null);
-        formPanel.getAdressTextArea().setText("");
+        formPanel.getAddressTextArea().setText("");
         formPanel.getQualificationComboBox().setSelectedIndex(0);
+        formPanel.setIdTextFieldStatus(false);
     }
 }

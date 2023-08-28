@@ -45,6 +45,7 @@ public class TablePanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                formPanel.setIdTextFieldStatus(true);
                 int selectedRow = table.getSelectedRow();
                 int id = (Integer) table.getValueAt(selectedRow,0) ;
                 Employee employeeFind = employeeDao.findById(id);
@@ -63,7 +64,7 @@ public class TablePanel {
                     formPanel.getContactNoTextField().setText(employeeFind.getContactNo());
                     formPanel.getImagePathTextField().setText(employeeFind.getEmployeeImage());
                     formPanel.getChooser().setDate(employeeFind.getDoj());
-                    formPanel.getAdressTextArea().setText(employeeFind.getAddress());
+                    formPanel.getAddressTextArea().setText(employeeFind.getAddress());
                     int indexQualification = listQualification.indexOf(employeeFind.getQualification());
                     formPanel.getQualificationComboBox().setSelectedIndex(indexQualification);
                     if(employeeFind.getGender().equals("MALE")){

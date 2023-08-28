@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileSystemView;
 @Data
 public class FormPanel {
     private JPanel formPanel;
-    private JTextField IdTextField;
+    private JTextField idTextField;
     private JTextField nameTextField;
     private JTextField ageTextField;
     private JTextField bloodGroupTextField;
@@ -48,11 +48,12 @@ public class FormPanel {
         idLabel.setLocation(50, 25);
         c.add(idLabel);
 
-        IdTextField = new JTextField();
-        IdTextField.setFont(new Font("Arial", Font.PLAIN, 15));
-        IdTextField.setSize(150, 20);
-        IdTextField.setLocation(150, 25);
-        c.add(IdTextField);
+        idTextField = new JTextField();
+        idTextField.setEnabled(false);
+        idTextField.setFont(new Font("Arial", Font.PLAIN, 15));
+        idTextField.setSize(150, 20);
+        idTextField.setLocation(150, 25);
+        c.add(idTextField);
 
         JLabel name = new JLabel("Name : ");
         name.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -247,5 +248,9 @@ public class FormPanel {
         Image newImg = image.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newImg);
         imageLabel.setIcon(imageIcon);
+    }
+
+    public void setIdTextFieldStatus (boolean status){
+        idTextField.setEnabled(status);
     }
 }
