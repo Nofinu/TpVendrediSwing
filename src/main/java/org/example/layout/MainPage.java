@@ -20,7 +20,9 @@ public class MainPage {
         TablePanel tablePanel = new TablePanel(formPanel,buttonPanel);
         buttonPanel.setTablePanel(tablePanel);
 
+        mainPage.add(Box.createRigidArea(new Dimension(5,5)));
         mainPage.add(buttonPanel.getButtonPanel());
+        mainPage.add(Box.createRigidArea(new Dimension(5,5)));
         mainPage.add(tablePanel.getTablePanel());
 
         mainPage.setVisible(true);
