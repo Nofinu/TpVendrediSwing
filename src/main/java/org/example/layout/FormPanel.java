@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Locale;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileSystemView;
 
 @Data
@@ -27,12 +29,14 @@ public class FormPanel {
     private JComboBox<String> qualificationComboBox;
     private JRadioButton maleRadioButton;
     private JRadioButton femaleRadioButton;
+    private ImageIcon imageIcon;
+    private JLabel imageLabel;
 
     private    String[] qualificationList = {"DOCT","DESS","MAST","LICE","BTS","DEUG","DUT","BAC"};
 
     public FormPanel() {
         formPanel = new JPanel(new BorderLayout());
-        formPanel.setPreferredSize(new Dimension(500,250));
+        formPanel.setPreferredSize(new Dimension(800,250));
         formPanel.setBackground(Color.white);
         formPanel.setBorder(new LineBorder(Color.black));
 
@@ -163,11 +167,11 @@ public class FormPanel {
         adressTextArea.setLocation(460, 25);
         c.add(adressTextArea);
 
-        JLabel imageLable = new JLabel("ImagePath : ");
-        imageLable.setFont(new Font("Arial", Font.PLAIN, 16));
-        imageLable.setSize(100, 20);
-        imageLable.setLocation(375, 200);
-        c.add(imageLable);
+        JLabel imagePathLabel = new JLabel("ImagePath : ");
+        imagePathLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        imagePathLabel.setSize(100, 20);
+        imagePathLabel.setLocation(375, 200);
+        c.add(imagePathLabel);
 
         imagePathTextField = new JTextField();
         imagePathTextField.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -196,9 +200,52 @@ public class FormPanel {
         });
         c.add(addFileButton);
 
+        imageLabel = new JLabel( imageIcon);
+        imageLabel.setBackground(Color.GRAY);
+        imageLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        imageLabel.setSize(200, 250);
+        imageLabel.setLocation(700,50);
+        c.add(imageLabel);
+
+        imagePathTextField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateImage();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateImage();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateImage();
+            }
+        });
+
+        imagePathTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(imagePathTextField.getText());
+                imageIcon = new ImageIcon(imagePathTextField.getText());
+                Image image = imageIcon.getImage();
+                Image newImg = image.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
+                imageIcon = new ImageIcon(newImg);
 
 
+                imageLabel.setIcon(imageIcon);
+
+            }
+        });
 
         formPanel.add(c,BorderLayout.CENTER);
+    }
+    private void updateImage (){
+        imageIcon = new ImageIcon(imagePathTextField.getText());
+        Image image = imageIcon.getImage();
+        Image newImg = image.getScaledInstance(200, 200,  java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newImg);
+        imageLabel.setIcon(imageIcon);
     }
 }
