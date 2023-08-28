@@ -25,7 +25,7 @@ public class FormPanel {
     private JTextField imagePathTextField;
 
     private JDateChooser chooser;
-    private JTextArea adressTextArea;
+    private JTextArea addressTextArea;
     private JComboBox<String> qualificationComboBox;
     private JRadioButton maleRadioButton;
     private JRadioButton femaleRadioButton;
@@ -153,19 +153,19 @@ public class FormPanel {
         chooser.setLocale(Locale.FRANCE);
         c.add(chooser);
 
-        JLabel AdressLabel = new JLabel("Adress : ");
-        AdressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-        AdressLabel.setSize(100, 20);
-        AdressLabel.setLocation(375, 25);
-        c.add(AdressLabel);
+        JLabel AddressLabel = new JLabel("Address : ");
+        AddressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        AddressLabel.setSize(100, 20);
+        AddressLabel.setLocation(375, 25);
+        c.add(AddressLabel);
 
-        adressTextArea = new JTextArea();
-        adressTextArea.setBackground(Color.white);
-        adressTextArea.setBorder(new LineBorder(Color.gray));
-        adressTextArea.setFont(new Font("Arial", Font.PLAIN, 15));
-        adressTextArea.setSize(200, 125);
-        adressTextArea.setLocation(460, 25);
-        c.add(adressTextArea);
+        addressTextArea = new JTextArea();
+        addressTextArea.setBackground(Color.white);
+        addressTextArea.setBorder(new LineBorder(Color.gray));
+        addressTextArea.setFont(new Font("Arial", Font.PLAIN, 15));
+        addressTextArea.setSize(200, 125);
+        addressTextArea.setLocation(460, 25);
+        c.add(addressTextArea);
 
         JLabel imagePathLabel = new JLabel("ImagePath : ");
         imagePathLabel.setFont(new Font("Arial", Font.PLAIN, 16));
