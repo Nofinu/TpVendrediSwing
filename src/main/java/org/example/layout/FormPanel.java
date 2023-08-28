@@ -22,14 +22,19 @@ public class FormPanel {
     private JTextField contactNoTextField;
     private JTextField imagePathTextField;
 
+    private JDateChooser chooser;
     private JTextArea adressTextArea;
     private JComboBox<String> qualificationComboBox;
     private JRadioButton maleRadioButton;
     private JRadioButton femaleRadioButton;
 
+    private    String[] qualificationList = {"DOCT","DESS","MAST","LICE","BTS","DEUG","DUT","BAC"};
+
     public FormPanel() {
         formPanel = new JPanel(new BorderLayout());
+        formPanel.setPreferredSize(new Dimension(500,250));
         formPanel.setBackground(Color.white);
+        formPanel.setBorder(new LineBorder(Color.black));
 
         Container c = new Container();
 
@@ -125,7 +130,7 @@ public class FormPanel {
         qualificationLabel.setLocation(100, 175);
         c.add(qualificationLabel);
 
-        String[] qualificationList = {"DOCT","DESS","MAST","LICE","BTS","DEUG","DUT","BAC"};
+
         qualificationComboBox= new JComboBox<>(qualificationList);
         qualificationComboBox.setBackground(Color.white);
         qualificationComboBox.setSize(150,20);
@@ -138,7 +143,7 @@ public class FormPanel {
         startDateLabel.setLocation(100, 200);
         c.add(startDateLabel);
 
-        JDateChooser chooser = new JDateChooser();
+        chooser = new JDateChooser();
         chooser.setLocation(200,200);
         chooser.setSize(150,20);
         chooser.setLocale(Locale.FRANCE);
@@ -154,20 +159,20 @@ public class FormPanel {
         adressTextArea.setBackground(Color.white);
         adressTextArea.setBorder(new LineBorder(Color.gray));
         adressTextArea.setFont(new Font("Arial", Font.PLAIN, 15));
-        adressTextArea.setSize(200, 150);
+        adressTextArea.setSize(200, 125);
         adressTextArea.setLocation(460, 25);
         c.add(adressTextArea);
 
         JLabel imageLable = new JLabel("ImagePath : ");
         imageLable.setFont(new Font("Arial", Font.PLAIN, 16));
         imageLable.setSize(100, 20);
-        imageLable.setLocation(375, 230);
+        imageLable.setLocation(375, 200);
         c.add(imageLable);
 
         imagePathTextField = new JTextField();
         imagePathTextField.setFont(new Font("Arial", Font.PLAIN, 15));
         imagePathTextField.setSize(200, 25);
-        imagePathTextField.setLocation(460, 230);
+        imagePathTextField.setLocation(460, 200);
         c.add(imagePathTextField);
 
         JFileChooser fileChooser = new JFileChooser(
@@ -175,10 +180,10 @@ public class FormPanel {
                         .getFileSystemView()
                         .getHomeDirectory());
 
-        JButton addFileButton = new JButton("file");
+        JButton addFileButton = new JButton("Upload Image");
         addFileButton.setBackground(Color.white);
         addFileButton.setSize(200,25);
-        addFileButton.setLocation(460,200);
+        addFileButton.setLocation(460,170);
         addFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -10,7 +10,7 @@ public class Main {
             @Override
             public void run() {
                 JFrame jFrame = new JFrame("Application");
-                jFrame.setSize(800,400);
+                jFrame.setSize(800,800);
                 jFrame.setContentPane(new MainPage().getMainPage());
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 jFrame.setVisible(true);
